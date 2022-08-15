@@ -1,14 +1,17 @@
 import './App.css';
-import {Navigate, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Login from './pages/Login';
 import Panic from './pages/Panic';
+import ProtectedRoutes from './pages/ProtectedRoutes';
 
 function App() {
   return (
       <div className="App">
         <Routes>
-          <Route path="/" element={<Login />}/>
-          <Route path="/panic" element={sessionStorage.getItem("access_granted") === "true" ? <Panic /> : <Navigate to="/"/>} />
+          <Route element={<ProtectedRoutes/>}>
+            <Route exact path="/panic" element={<Panic />} />
+          </Route>
+          <Route exact path="/" element={<Login />}/>         
         </Routes>
       </div>
   );
