@@ -58,6 +58,7 @@ function Panic() {
     if (response.status === "success") {
       setCancelToggle(!CancelToggle);
     } else {
+      setCancelToggle(!CancelToggle);
       alert(response.message);
     };
   }
