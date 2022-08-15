@@ -13,7 +13,7 @@ function Login() {
     let submitData = async (event) => {
         event.preventDefault();
         setLoginLoader(true);
-        let response_obj = await fetch("http://127.0.0.1:8000/api/login", {
+        let response_obj = await fetch("https://batman-panic-app-server.herokuapp.com/api/login"/*"http://127.0.0.1:8000/api/login"*/, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -23,7 +23,6 @@ function Login() {
         });
         let response = await response_obj.json();
         setLoginLoader(false);
-        console.log(response);
         if (response.status === "success") {
             sessionStorage.setItem("access_granted", true);
             sessionStorage.setItem("token", response.data.api_access_token);

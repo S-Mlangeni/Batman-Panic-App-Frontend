@@ -12,7 +12,7 @@ function Panic() {
   let [LogoutLoader, setLogoutLoader] = useState(false);
   let [GetLoader, setGetLoader] = useState(false);
   let [SendLoader, setSendLoader] = useState(false);
-  let [CancelBtnNumber, setCancelBtnNumber] = useState("0");
+  let [CancelBtnNumber, setCancelBtnNumber] = useState(0);
 
   let [SendToggle, setSendToggle] = useState(false);
   let [CancelToggle, setCancelToggle] = useState(false);
@@ -22,7 +22,7 @@ function Panic() {
   useEffect(() => {
     let getPanics = async () => {
       setGetLoader(true);
-      let response_obj = await fetch("http://127.0.0.1:8000/api/panic_history", {
+      let response_obj = await fetch("https://batman-panic-app-server.herokuapp.com/api/panic_history"/*"http://127.0.0.1:8000/api/panic_history"*/, {
           method: "GET",
           headers: { 
             "Accept": "application/json",
@@ -31,7 +31,6 @@ function Panic() {
       });
       let response = await response_obj.json();
       setGetLoader(false);
-      console.log(response.data.panics);
       if (response.status === "success") {
         setPanics(response.data.panics);
       } else {
@@ -44,7 +43,7 @@ function Panic() {
   let cancelPanic = async (e) => {
     let panicID = e.target.value;
     setCancelBtnNumber(panicID);
-    let response_obj = await fetch("http://127.0.0.1:8000/api/cancel_panic", {
+    let response_obj = await fetch("https://batman-panic-app-server.herokuapp.com/api/cancel_panic"/*"http://127.0.0.1:8000/api/cancel_panic"*/, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -56,7 +55,6 @@ function Panic() {
         })
     });
     let response = await response_obj.json();
-    console.log(response);
     if (response.status === "success") {
       setCancelToggle(!CancelToggle);
     } else {
@@ -67,7 +65,7 @@ function Panic() {
   let sendPanic = async (e) => {
     e.preventDefault();
     setSendLoader(true);
-    let response_obj = await fetch("http://127.0.0.1:8000/api/send_panic", {
+    let response_obj = await fetch("https://batman-panic-app-server.herokuapp.com/api/send_panic"/*"http://127.0.0.1:8000/api/send_panic"*/, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -83,7 +81,6 @@ function Panic() {
     });
     let response = await response_obj.json();
     setSendLoader(false);
-    console.log(response);
     if (response.status === "success") {
       setLongitude("");
       setLatitude("");
@@ -97,7 +94,7 @@ function Panic() {
   
   let logout = async () => {
     setLogoutLoader(true);
-    let response_obj = await fetch("http://127.0.0.1:8000/api/logout", {
+    let response_obj = await fetch("https://batman-panic-app-server.herokuapp.com/api/logout"/*"http://127.0.0.1:8000/api/logout"*/, {
         method: "POST",
         headers: { 
           "Accept": "application/json",
@@ -106,7 +103,6 @@ function Panic() {
     });
     let response = await response_obj.json();
     setLogoutLoader(false);
-    console.log(response);
     if (response.status === "success") {
         sessionStorage.setItem("access_granted", false);
         navigate(-1);
