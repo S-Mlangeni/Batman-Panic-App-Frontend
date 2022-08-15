@@ -1,0 +1,90 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 20px 30px;
+    width: 100%;
+}
+
+.header h1 {
+    color: white;
+}
+
+.header .logo {
+    background-image: url(../../public/batman_logo_white.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 43px;
+    width: 80px;
+}
+
+.header button {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: white;
+    border-color: #ced4da;
+}
+
+.formWrapper {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.panicForm {
+    width: 360px;
+}
+
+.panicForm div {
+    margin-top: 15px;
+}
+
+.panicWrapper {
+    height: 100vh;
+    background-color: black;
+}
+
+.panicHistory {
+    background-color: black;
+    width: 100%;
+    padding: 20px 30px;
+}
+
+.panicHistory h2 {
+    color: white;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+}
+
+.loader p {
+    color: white;
+}
+
+.historyContent {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.historyContent p {
+    margin: 0px;
+}
+
+.historyContent button {
+    padding: 5px;
+    border-radius: 5px;
+}
