@@ -34,6 +34,7 @@ function Panic() {
       if (response.status === "success") {
         setPanics(response.data.panics);
       } else {
+        setPanics(response.data.panics);
         alert(response.message);
       }
     };
